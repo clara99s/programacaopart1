@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+typedef struct funcionario Funcionario;
+
+struct funcionario {
+  char nomeFun;
+  char cpf;
+  long int tel;
+  char graduacao;
+  char situacao;
+};
+
+int menuPrincipal(void);
+
+Funcionario* preencheFuncionario(void);
+
+
+
+int main(void) {
+  int opcao;
+  opcao = menuPrincipal();
+  while (opcao != 0) {
+    switch (opcao) {
+    
+      case 1 : preencheFuncionario();
+      break;
+      
+      case 0 : menuPrincipal();
+      break;
+    }
+    opcao = menuPrincipal();
+    
+
+
+  }
+  
+  return 0;
+}
+
+
+int menuPrincipal(void) {
+  int op;
+  printf("          Menu Principal\n");
+  printf("1 - Cadastrar funcionários\n");
+  printf("2 - Registros de Funcionários\n");
+  printf("3 - Relatorios de Funcionários\n");
+  printf("0 - Encerrar programa\n");
+  printf("Escolha sua opção: ");
+  scanf("%d", &op);
+  return op;
+}
+
+
+Funcionario* preencheFuncionario(void) {
+  Funcionario* fun;
+  fun = (Funcionario*) malloc(sizeof(Funcionario));
+  printf("\nInforme o nome do Funcionario: ");
+  scanf(" %81[^\n]", &fun->nomeFun);
+  printf("Informe o CPF do Funcionário: ");
+  scanf("%s", &fun->cpf);
+  printf("Informe a graduação do funcionário: ");
+  scanf(" %80[^\n]", &fun->graduacao);
+  printf("Informe o telefone do Funcionario: ");
+  scanf("%ld", &fun->tel);
+  printf("Funcionário Cadastrado com sucesso!");
+  return fun;
+}
+
+
